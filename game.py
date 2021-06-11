@@ -36,6 +36,7 @@ class AlgorithmGame(RulesGame):
             if self.text[i] == self.sample[i]:
                 self.newHint += 'X'
                 test.append(i)
+
         lstRows = test.copy()
         for i in range(4):
             for j in range(4):
