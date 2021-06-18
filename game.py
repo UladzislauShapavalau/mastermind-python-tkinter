@@ -42,7 +42,7 @@ class RulesGame:
             self.scammer['state'] = 'disabled'
 
     def mainLogic(self, txt):
-        """Głowna logika gry. Liczy i daje odpowiedzi czy gracz poprawnie podał liczby.."""
+        """Głowna logika gry. Liczy i daje odpowiedzi czy gracz poprawni+e podał liczby.."""
         self.text = txt.get()
         assert isTrueInput(self.text) is True
         self.newHint = ''
