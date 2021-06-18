@@ -19,6 +19,7 @@ class RulesGame:
         self.ruleGame = False
 
     def resetBtn(self):
+        """Funkcja restartuje nową grę"""
         self.sample.clear()
         for widget in self.root.winfo_children():
             widget.destroy()
@@ -30,13 +31,18 @@ class RulesGame:
         # self.infoBar.configure(text=self.sample)
 
     def isScammer(self):
+        """Sprawdzanie czy reguły gry są prawidłowe"""
         if self.ruleGame:
             self.infoBar.configure(text='Złapałeś/łas mnie!')
-            disableButtons(self.check, self.scammer)
+            self.check['state'] = 'disabled'
+            self.scammer['state'] = 'disabled'
         else:
             self.infoBar.configure(text=f'Tere fere, {"".join(self.sample)}')
+            self.check['state'] = 'disabled'
+            self.scammer['state'] = 'disabled'
 
-    def checkText(self, txt):
+    def mainLogic(self, txt):
+        """Głowna logika gry. Liczy i daje odpowiedzi czy gracz poprawnie podał liczby.."""
         self.text = txt.get()
         assert isTrueInput(self.text) is True
         self.newHint = ''
@@ -58,9 +64,13 @@ class RulesGame:
         self.hint.configure(text=self.newHint)
         if self.newHint == 'XXXX':
             self.infoBar.configure(text='Wygrana!')
+            self.check['state'] = 'disabled'
+            self.scammer['state'] = 'disabled'
         elif self.attempts > 10:
             self.infoBar.configure(text=f'Przegrana! {"".join(self.sample)}')
-            disableButtons(self.check, self.scammer)
+            #disableButtons(self.check, self.scammer)
+            self.check['state'] = 'disabled'
+            self.scammer['state'] = 'disabled'
             self.root.unbind('<Return>')
         Label(self.root, text=f'{self.rows - 1}) {self.text} {self.newHint}').grid(row=self.rows, column=0,
                                                                                    columnspan=8, sticky='w', padx=4)
@@ -69,12 +79,13 @@ class RulesGame:
         self.textBox.delete(0, 'end')
 
     def drawField(self):
+        """Funkcja rysuje okno"""
         text = StringVar()
         self.textBox = Entry(self.root, width=4, textvariable=text, justify='left')
         self.textBox.grid(row=0, column=0, columnspan=4, sticky="e", padx=17, pady=5)
         self.hint = Label(self.root, text='    ')
         self.hint.grid(row=0, column=5, columnspan=4, padx=10, pady=5)
-        self.check = Button(self.root, text='Sprawdż', command=lambda t=text: self.checkText(t))
+        self.check = Button(self.root, text='Sprawdż', command=lambda t=text: self.mainLogic(t))
         self.reset = Button(self.root, text='Reset', command=self.resetBtn)
         self.scammer = Button(self.root, text='Oszust!', command=self.isScammer)
         self.check.grid(row=0, column=10, columnspan=4, sticky="nsew", padx=17, pady=5)
@@ -82,7 +93,7 @@ class RulesGame:
         self.reset.grid(row=2, column=10, columnspan=4, sticky="nsew", padx=17, pady=5)
         self.infoBar = Label(self.root, text='    ')
         self.infoBar.grid(row=1, column=0, columnspan=8)
-        self.root.bind('<Return>', lambda event: self.checkText(text))
+        self.root.bind('<Return>', lambda event: self.mainLogic(text))
         self.root.bind('<Escape>', lambda event: self.resetBtn())
         self.ruleGame = whatIsRule()
         print(self.sample)

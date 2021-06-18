@@ -3,6 +3,7 @@ from tkinter import messagebox
 
 
 def isTrueInput(text):
+    """Sprawdzanie czy prawidłowo podane dane"""
     if len(str(text)) == 4:
         for i in str(text):
             try:
@@ -17,21 +18,17 @@ def isTrueInput(text):
         messagebox.showerror('Invalid input', 'Length must be 4')
         return False
 
-"""Generuje losowe liczbe"""
 def generateSample():
+    """Generuje losowe liczby do odgadnięcia"""
     return [choice('123456') for _ in range(4)]
 
-"""Wybór zestawu reguł"""
 def whatIsRule():
+    """Wybór zestawu reguł"""
     return choice([True, False])
 
-"""Generuje niepoprawne odpowiedzi"""
 def createFakeFeedback():
+    """Generuje niepoprawne odpowiedzi"""
     amount = randint(1, 3)
     text = choices(['X', 'O'], weights=(4, 6), k=amount)
     return ''.join(sorted(text, reverse=True))
 
-"""Blokuje przeciski"""
-def disableButtons(*args):
-    for i in args:
-        i['state'] = 'disabled'
