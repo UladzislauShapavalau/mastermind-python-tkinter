@@ -52,3 +52,5 @@ Testy
 ```test_6_checkIfScammer``` - Wciśnięcie przycisku "Oszust!" pry niepoprawnych zasadach gry.
 
 ```test_7_checkIfScammer``` - Wciśnięcie przycisku "Oszust!" pry poprawnych zasadach gry.
+
+```test_8_checkReset``` - Wpisanie 10 odpowiedzi z błędymi cyframi. Wciśnięcie "Reset". Wpisanie 5 odpowiedzi z błędymi cyframi. Sprawdzanie czy licznik tur resetuje po wciścnięciu "Reset".

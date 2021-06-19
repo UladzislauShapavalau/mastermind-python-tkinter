@@ -102,5 +102,23 @@ class TestProject(unittest.TestCase):
 
         self.assertTrue(response in self.root.children[f'!label23'].cget('text'))
 
+    def test_8_checkReset(self):
+        """Wpisanie 10 odpowiedzi z błędymi cyframi. Wciśnięcie "Reset".
+        Wpisanie 5 odpowiedzi z błędymi cyframi. Sprawdzanie czy licznik tur
+        resetuje po wciścnięciu "Reset" """
+        self.game.ruleGame = False
+        self.game.sample = ['2', '2', '2', '2']
+        entry = StringVar(self.root, "1111")
+        response = 5
+
+        for i in range(10):
+            self.game.mainLogic(entry)
+
+        self.game.resetBtn()
+
+        for i in range(5):
+            self.game.mainLogic(entry)
+
+        self.assertEqual(response, self.game.attempts)
 if __name__ == '__main__':
     unittest.main()
