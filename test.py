@@ -120,5 +120,7 @@ class TestProject(unittest.TestCase):
             self.game.mainLogic(entry)
 
         self.assertEqual(response, self.game.attempts)
+
+
 if __name__ == '__main__':
     unittest.main()

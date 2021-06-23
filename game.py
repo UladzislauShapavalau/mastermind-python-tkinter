@@ -3,7 +3,9 @@ from functions import *
 
 
 class RulesGame:
+    """Klasa zawierająca funkcji logiki gry, restarta, sprawdzania reguł oraz rysowania okna"""
     def __init__(self, root):
+        """Inicjalizuje zmienne"""
         self.root = root
         self.textBox = Entry()
         self.hint = Label()
@@ -28,7 +30,6 @@ class RulesGame:
         self.attempts = 0
         self.ruleGame = whatIsRule()
         self.drawField()
-        # self.infoBar.configure(text=self.sample)
 
     def isScammer(self):
         """Sprawdzanie czy reguły gry są prawidłowe"""
@@ -68,7 +69,6 @@ class RulesGame:
             self.scammer['state'] = 'disabled'
         elif self.attempts > 10:
             self.infoBar.configure(text=f'Przegrana! {"".join(self.sample)}')
-            #disableButtons(self.check, self.scammer)
             self.check['state'] = 'disabled'
             self.scammer['state'] = 'disabled'
             self.root.unbind('<Return>')
