@@ -5,7 +5,7 @@ from functions import *
 class RulesGame:
     """Klasa zawierająca funkcji logiki gry, restarta, sprawdzania reguł oraz rysowania okna"""
     def __init__(self, root):
-        """Inicjalizuje zmienne"""
+        """Inicjalizacja zmiennych"""
         self.root = root
         self.textBox = Entry()
         self.hint = Label()
@@ -43,7 +43,7 @@ class RulesGame:
             self.scammer['state'] = 'disabled'
 
     def mainLogic(self, txt):
-        """Głowna logika gry. Liczy i daje odpowiedzi czy gracz poprawni+e podał liczby.."""
+        """Główna logika gry. Liczy i daje odpowiedzi czy gracz poprawnie podał liczby."""
         self.text = txt.get()
         assert isTrueInput(self.text) is True
         self.newHint = ''
