@@ -2,9 +2,9 @@
 https://github.com/UladzislauShapavalau/mastermind-python-tkinter
 
 ---
-###Projekt z Języków Symbolicznych
+### Projekt z Języków Symbolicznych
 
-######Dokumentacja
+###### Dokumentacja
 
 # _Mastermind_
 Gracz wpisuje "kod"(4 cyfry) składający się z liczb od 1 do 6 włącnie. Jego zadaniem będzie odgadnięcie tego kodu w skończonej liczbie prób (12 prób). Po każdej próbie gracz jest informowany jedynie ile z elementów, które wypróbował w danej kolejce znajduje się w ukrytym kodzie (wypisuje „O”) i ile z nich znajduje się już na swojej pozycji (wypisuje „X”). Zbierając informacje z listy w końcu dochodzi do ostatecznego rozwiązania. Jesli gracz z 12 prób nie odgadł kodu, wyświetla się napis "Przegrana!" i kod króry był zgenerowany. W przypadku zwycięstwa wyświetla się napis "Wygrana!". Także na początku każdej gry program wybiera losowe reguły. Przy niepoprawnych regułach program będzie wypisywać niepoprawne odpowiedzi. Jeśli gracz zauważy, że gra wypisuje dziwne podpowiedzi to on może to spwrawdzić wciskając przecisk "Oszust!". Jesli reguła gry będzie niepoprawna to wyświetla się napis "Złapałeś/łas mnie!". Jesli poprawna to "Tere fere" i kod króry był zgenerowany.
